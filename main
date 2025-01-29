@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KutayHesap.co - Giriş</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .login-container {
+            background: white;
+            width: 300px;
+            padding: 20px;
+            margin: 100px auto;
+            box-shadow: 0px 0px 10px gray;
+            border-radius: 10px;
+        }
+
+        input {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 10px;
+            width: 100%;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background: #218838;
+        }
+
+        #error-message {
+            color: red;
+            margin-top: 10px;
+        }
+
+        header {
+            background: #007bff;
+            color: white;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header button {
+            background: red;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .table-container {
+            margin: 20px auto;
+            width: 80%;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 10px;
+            border: 1px solid #ccc;
+            text-align: center;
+        }
+
+        th {
+            background: #007bff;
+            color: white;
+        }
+    </style>
+</head>
+<body onload="checkAuth()">
+
+    <div id="login-container">
+        <h2>Giriş Yap</h2>
+        <input type="text" id="username" placeholder="Kullanıcı Adı">
+        <input type="password" id="password" placeholder="Şifre">
+        <button onclick="login()">Giriş Yap</button>
+        <p id="error-message"></p>
+    </div>
+
+    <div id="main-page" class="hidden">
+        <header>
+            <h1>KutayHesap.co</h1>
+            <button onclick="logout()">Çıkış Yap</button>
+        </header>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>AccountTag</th>
+                        <th>Password</th>
+                        <th>Status</th>
+                        <th>WebID</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>danhnguyendt54</td>
+                        <td>taotendanh55554</td>
+                        <td>Open</td> 
+                        <td>SteamAccount</td>
+                    </tr>
+                    <tr>
+                        <td>esuar03@gmail.com</td>
+                        <td>Business1</td>
+                        <td>Banned(close)</td>
+                        <td>Disney+</td>
+                    </tr>
+                    <tr>
+                        <td>meralyanar-83@hotmail.com</td>
+                        <td>beyzabatu12</td>
+                        <td>Open</td>  
+                        <td>Blu TV</td>
+                    </tr>
+                    <tr>
+                        <td>modzkilleur23</td>
+                        <td>Carduner19801980</td>
+                        <td>Open</td> 
+                        <td>Steam</td>
+                    </tr>   
+                    <tr>
+                        <td>osa8228</td>
+                        <td>beznog8228</td>
+                        <td>Open</td> 
+                        <td>Steam</td>
+                    </tr>
+                    <tr>
+                        <td>mydicksobig4213</td>
+                        <td>sofucknigalick</td>
+                        <td>Banned(Close)</td> 
+                        <td>Steam</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div> 
+        <span style="font-family: @GungsuhChe, @MingLiU_HKSCS, @MingLiU-ExtB; font-weight: bold; font-style: normal; text-decoration:  underline; color: #FF0000; vertical-align: super;">Developper: KUTAYDew</span>
+    </div>
+
+    <script>
+        function checkAuth() {
+            if (localStorage.getItem("authenticated") === "true") {
+                document.getElementById("login-container").classList.add("hidden");
+                document.getElementById("main-page").classList.remove("hidden");
+            }
+        }
+
+        function login() {
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+
+            if (username === "erayadmin" && password === "berfineray1254") {
+                localStorage.setItem("authenticated", "true");
+                document.getElementById("login-container").classList.add("hidden");
+                document.getElementById("main-page").classList.remove("hidden");
+            } else {
+                document.getElementById("error-message").innerText = "Hatalı kullanıcı adı veya şifre!";
+            }
+        }
+
+        function logout() {
+            localStorage.removeItem("authenticated");
+            document.getElementById("main-page").classList.add("hidden");
+            document.getElementById("login-container").classList.remove("hidden");
+        }
+    </script>
+
+</body>
+</html>
